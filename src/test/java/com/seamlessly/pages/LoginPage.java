@@ -22,13 +22,13 @@ public class LoginPage {
     }
 
     @FindBy(id = "user")
-    WebElement userInput;
+    public WebElement userInput;
 
     @FindBy(id = "password")
-    WebElement passwordInput;
+    public WebElement passwordInput;
 
     @FindBy(id = "submit-form")
-    WebElement loginButton;
+    public WebElement loginButton;
 
 
 
