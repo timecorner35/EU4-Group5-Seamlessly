@@ -10,6 +10,7 @@ public class ProfileSettingsPage extends BasePage {
     public WebElement emailInput;
     @FindBy(id = "phone")
     public WebElement phoneInput;
+
     @FindBy(id = "address")
     public WebElement addressInput;
     @FindBy(id = "website")
