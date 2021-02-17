@@ -48,30 +48,18 @@ public abstract class BasePage {
     @FindBy(xpath = "//*[@data-id='logout']")
     public WebElement logut;
 
-    public void goToSettings() {
-        profile.click();
-        pset.click();
-    }
 
-    public void goToStatus() {
-        profile.click();
-        pstat.click();
-    }
-
-    public void goToHelp() {
-        profile.click();
-        help.click();
-    }
-
-    public void gologout() {
-        profile.click();
-        logut.click();
-    }
 
     public void navigateTo(String s) {
         Driver.get().findElement(By.xpath("//*[@aria-label='" + s + "']")).click();
 
-
+    }
+    public void clickSettingsModule(String module){
+        if(module.equals("Status")){
+            pstat.click();
+        }else{
+        String path = "//*[@data-id='"+module.toLowerCase()+"']";
+        Driver.get().findElement(By.xpath(path)).click();}
     }
 
 }
