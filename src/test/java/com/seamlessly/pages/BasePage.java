@@ -49,7 +49,7 @@ public abstract class BasePage {
     public WebElement logut;
 
 
-
+//navigates Files, Photos, Activity...
     public void navigateToTab(String s) {
         if (s.equals("Home")){
             homeButton.click();
