@@ -7,10 +7,11 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.JavascriptExecutor;
 
 public class StatusSettingsStepDefinitions {
-    @Given("User logged in as {string}")
-    public void user_logged_in_as(String string) {
+    @Given("the user logged in as {string}")
+    public void the_user_logged_in_as(String string) {
         LoginPage loginPage = new LoginPage();
         loginPage.login(string);
     }
@@ -43,12 +44,23 @@ public class StatusSettingsStepDefinitions {
         Assert.assertEquals(string, actual);
         System.out.println(actual);
     }
+
     @Given("clicks {string} module")
     public void clicks_module(String string) {
         OnlineStatusPopupPage onlineStatusPopupPage = new OnlineStatusPopupPage();
         onlineStatusPopupPage.clickSettingsModuleOptions(string);
+    }
+
+    @When("user enters {string} into inputbox")
+    public void user_enters_into_inputbox(String string) throws InterruptedException {
+        OnlineStatusPopupPage onlineStatusPopupPage = new OnlineStatusPopupPage();
+        onlineStatusPopupPage.inputBox.clear();
+        Thread.sleep(2000);
+        onlineStatusPopupPage.inputBox.sendKeys(string);
+        Thread.sleep(2000);
 
 
+        onlineStatusPopupPage.setStatusButton.click();
     }
 
 
