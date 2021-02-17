@@ -15,7 +15,7 @@ public abstract class BasePage {
     Actions actions = new Actions(Driver.get());
     @FindBy(id = "nextcloud")
     public WebElement homeButton;
-    @FindBy(xpath = "//*[@*='active']")
+    @FindBy(css = ".logo.logo-icon")
     public WebElement filesButton;
     @FindBy(xpath = "//*[@*='activity']")
     public WebElement activityButton;
@@ -51,6 +51,9 @@ public abstract class BasePage {
 
 
     public void navigateToTab(String s) {
+        if (s.equals("Home")){
+            homeButton.click();
+        }else
         Driver.get().findElement(By.xpath("//*[@aria-label='" + s + "']")).click();
 
     }
