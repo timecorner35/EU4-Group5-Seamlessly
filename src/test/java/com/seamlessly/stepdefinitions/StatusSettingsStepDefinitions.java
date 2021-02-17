@@ -55,11 +55,7 @@ public class StatusSettingsStepDefinitions {
     public void user_enters_into_inputbox(String string) throws InterruptedException {
         OnlineStatusPopupPage onlineStatusPopupPage = new OnlineStatusPopupPage();
         onlineStatusPopupPage.inputBox.clear();
-        Thread.sleep(2000);
         onlineStatusPopupPage.inputBox.sendKeys(string);
-        Thread.sleep(2000);
-
-
         onlineStatusPopupPage.setStatusButton.click();
     }
 
