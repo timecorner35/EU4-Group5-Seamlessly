@@ -50,11 +50,11 @@ public abstract class BasePage {
 
 
 
-    public void navigateTo(String s) {
+    public void navigateToTab(String s) {
         Driver.get().findElement(By.xpath("//*[@aria-label='" + s + "']")).click();
 
     }
-    public void clickSettingsModule(String module){
+    public void clickSettingsModuleOptions(String module){
         if(module.equals("Status")){
             pstat.click();
         }else{

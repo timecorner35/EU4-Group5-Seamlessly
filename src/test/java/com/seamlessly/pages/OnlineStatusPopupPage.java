@@ -4,14 +4,10 @@ import com.seamlessly.utilities.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.PageFactory;
 
-public class OnlineStatusPopupPage {
+public class OnlineStatusPopupPage extends BasePage {
     public OnlineStatusPopupPage(){
         PageFactory.initElements(Driver.get(),this);
     }
-
-
-
-
 
     public void chooseStatus(String status){
         String statusPath = "//*[contains(.,'"+status+"')][@class='user-status-online-select']";
