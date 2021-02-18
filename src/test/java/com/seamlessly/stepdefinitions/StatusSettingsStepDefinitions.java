@@ -13,7 +13,7 @@ public class StatusSettingsStepDefinitions {
     @Given("the user logged in as {string}")
     public void the_user_logged_in_as(String string) {
         LoginPage loginPage = new LoginPage();
-        loginPage.login(string);
+      //  loginPage.login(string);
     }
 
 
