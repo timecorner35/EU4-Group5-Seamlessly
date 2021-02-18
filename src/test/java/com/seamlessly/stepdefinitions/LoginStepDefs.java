@@ -11,7 +11,7 @@ public class LoginStepDefs {
     public void the_user_has_already_logged_in_as(String user) {
         Driver.get().get(ConfigurationReader.get("url"));
         String username=null;
-        String password="Employee123";
+        String password=ConfigurationReader.get("password");
         if(user.equals("yusuf")){
             username=ConfigurationReader.get("yusuf");
         }else if(user.equals("asel")){
