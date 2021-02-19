@@ -23,7 +23,7 @@ public abstract class BasePage {
     public WebElement contactsButton;
     @FindBy(xpath = "//*[@*='calendar']")
     public WebElement calendarButton;
-    @FindBy(xpath = "//*[@*='notes']")
+    @FindBy(xpath = "(//*[@*='notes'])[1]")
     public WebElement notesButton;
     @FindBy(xpath = "//*[@*='desk']")
     public WebElement deskButton;
@@ -51,7 +51,7 @@ public abstract class BasePage {
 
 //navigates Files, Photos, Activity...
     public void navigateToTab(String s) {
-        if (s.equals("Home")){
+        if (s.equalsIgnoreCase("Home")){
             homeButton.click();
         }else
         Driver.get().findElement(By.xpath("//*[@aria-label='" + s + "']")).click();
