@@ -15,3 +15,6 @@ Feature: User should be able to login
     |   Employee13  |   Emploo12      |
     |   Emplooe1    |   Employee123   |
     |   Emploo9     |   Emplo987      |
+    |               |                 |
+    |   Emplo       |                 |
+    |               |   Emplooyee     |
