@@ -18,6 +18,9 @@ Feature: Changing Status
       | Do not disturb |
       | Invisible      |
 
+
+
+
   Scenario Outline: User can set up a generic status message
     Given the user logged in as "yusuf"
     And the user navigates to "Settings" tab and clicks
