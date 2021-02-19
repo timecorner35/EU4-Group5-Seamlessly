@@ -7,12 +7,6 @@ import io.cucumber.java.en.When;
 public class UploadFile {
 
 
-    @Given("login as user")
-    public void login_as_user() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
-
     @When("the user upload new file")
     public void the_user_upload_new_file() {
         // Write code here that turns the phrase above into concrete actions
