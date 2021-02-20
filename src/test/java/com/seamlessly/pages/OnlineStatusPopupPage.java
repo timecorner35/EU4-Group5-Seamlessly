@@ -1,5 +1,6 @@
 package com.seamlessly.pages;
 
+import com.seamlessly.utilities.BrowserUtils;
 import com.seamlessly.utilities.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptException;
@@ -28,8 +29,8 @@ public class OnlineStatusPopupPage extends BasePage {
 
     public void chooseDeadline(String string){
         OnlineStatusPopupPage onlineStatusPopupPage = new OnlineStatusPopupPage();
-        JavascriptExecutor jse = (JavascriptExecutor) Driver.get();
         onlineStatusPopupPage.clearOptions.click();
+        BrowserUtils.waitFor(1);
         String messagePath="//div[@*='"+string+"']";
         Driver.get().findElement(By.xpath(messagePath)).click();
         new OnlineStatusPopupPage().setStatusButton.click();

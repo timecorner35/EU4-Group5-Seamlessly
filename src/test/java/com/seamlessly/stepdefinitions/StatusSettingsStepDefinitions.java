@@ -45,8 +45,8 @@ public class StatusSettingsStepDefinitions {
         String actual = new OnlineStatusPopupPage().pstat.getText();
         if (string.equals("")){
             Assert.assertEquals(string+actual,actual);
-        }else 
-        Assert.assertEquals(string, actual);
+        }else
+        Assert.assertTrue(actual.contains(string));
         System.out.println(actual);
     }
 
@@ -60,8 +60,10 @@ public class StatusSettingsStepDefinitions {
     @When("user enters {string} into inputbox")
     public void user_enters_into_inputbox(String string) throws InterruptedException {
         OnlineStatusPopupPage onlineStatusPopupPage = new OnlineStatusPopupPage();
+        BrowserUtils.waitFor(1);
         onlineStatusPopupPage.inputBox.clear();
         onlineStatusPopupPage.inputBox.sendKeys(string);
+        BrowserUtils.waitFor(1);
         onlineStatusPopupPage.setStatusButton.click();
     }
 
@@ -75,6 +77,7 @@ public class StatusSettingsStepDefinitions {
     public void status_message_changes_to(String string) {
         Driver.get().navigate().refresh();
         new OnlineStatusPopupPage().profile.click();
+        BrowserUtils.waitFor(1);
         System.out.println(new OnlineStatusPopupPage().pstat.getText());
         String actual = new OnlineStatusPopupPage().pstat.getText();
         Assert.assertTrue(actual.contains(string));
