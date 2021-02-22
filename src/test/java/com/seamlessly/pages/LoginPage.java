@@ -22,7 +22,6 @@ public class LoginPage {
         PageFactory.initElements(Driver.get(), this);
     }
     public void login(String username){
-        Driver.get().get(ConfigurationReader.get("url"));
         userInput.sendKeys(ConfigurationReader.get(username));
         passwordInput.sendKeys(ConfigurationReader.get("password"));
         loginButton.click();

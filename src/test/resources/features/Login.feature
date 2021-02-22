@@ -4,7 +4,13 @@ Feature: User should be able to login
     Given the user is on the login page
     When the user enters valid username and password
     Then the user should be on the home(files module) page
-  @wip
+Feature: User should be able to login
+
+  Scenario: login with valid credentials
+    Given the user is on the login page
+    When the user enters valid username and password
+    Then the user should be on the home(files module) page
+
   Scenario Outline: login with invalid credentials
     Given the user is on the login page
     When the user enters "<username>" and "<password>"

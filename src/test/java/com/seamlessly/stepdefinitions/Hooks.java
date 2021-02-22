@@ -1,5 +1,6 @@
 package com.seamlessly.stepdefinitions;
 
+import com.seamlessly.utilities.ConfigurationReader;
 import com.seamlessly.utilities.Driver;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -14,7 +15,7 @@ public class Hooks {
     public void setUp(){
         Driver.get().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         Driver.get().manage().window().maximize();
-
+        Driver.get().get(ConfigurationReader.get("url"));
 
     }
     @After
