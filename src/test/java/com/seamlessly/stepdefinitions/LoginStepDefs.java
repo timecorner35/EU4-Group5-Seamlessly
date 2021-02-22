@@ -62,4 +62,23 @@ public class LoginStepDefs {
 
     }
 
+
+    @When("the user enters {string} and {string}")
+    public void the_user_enters_and(String username, String password) {
+        LoginPage loginPage = new LoginPage();
+       // String userName = ConfigurationReader.get("username");
+       // String passWord = ConfigurationReader.get("password");
+        loginPage.userInput.sendKeys(username);
+        loginPage.passwordInput.sendKeys(password);
+        loginPage.loginButton.click();
+    }
+
+
+    @Then("the title should contains {string}")
+    public void the_title_should_contains(String expectedTitle) {
+        BrowserUtils.waitFor(2);
+        String actualTitle=Driver.get().getCurrentUrl();
+        Assert.assertTrue(actualTitle.contains(expectedTitle));
+    }
+
 }
