@@ -10,11 +10,19 @@ public class FilesPage extends BasePage{
     @FindBy(xpath = "//ul/li/a[.='All files']")
     public WebElement allFiles;
 
-    @FindBy(xpath = "(//span[@class='icon icon-more'])[2]")
-    public WebElement folder;
+    @FindBy(xpath = "//span[@class='fileactions']//span[@class='icon icon-more']")
+    public List<WebElement> folderFile3dot;
 
-    @FindBy(xpath = "//div[@id='rightClickMenu']/ul/li[3]")
-    public WebElement rightClickMenu;
+    @FindBy(xpath = "//span[@class='nametext']")
+    public List<WebElement> folderFileList;
+
+    @FindBy(xpath = "//div[@id='rightClickMenus']/ul/li")
+    public List<WebElement> rightClickMenu;
+
+    @FindBy(xpath = "//div[@id='rightClickDetector']")
+    public WebElement hiddenBtn;
+
+
 }
 
 
