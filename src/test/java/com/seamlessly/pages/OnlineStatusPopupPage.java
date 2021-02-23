@@ -8,6 +8,8 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
@@ -22,18 +24,24 @@ public class OnlineStatusPopupPage extends BasePage {
     }
 
     public void chooseMessage(String string){
+        OnlineStatusPopupPage onlineStatusPopupPage = new OnlineStatusPopupPage();
         String messagePath="//span[contains(text(),'"+string+"')]";
         Driver.get().findElement(By.xpath(messagePath)).click();
-        new OnlineStatusPopupPage().setStatusButton.click();
+        JavascriptExecutor executor = (JavascriptExecutor) Driver.get();
+        executor.executeScript("arguments[0].scrollIntoView(true);", onlineStatusPopupPage.setStatusButton);
+        executor.executeScript("arguments[0].click();", onlineStatusPopupPage.setStatusButton);
     }
 
     public void chooseDeadline(String string){
         OnlineStatusPopupPage onlineStatusPopupPage = new OnlineStatusPopupPage();
         onlineStatusPopupPage.clearOptions.click();
-        BrowserUtils.waitFor(1);
+
         String messagePath="//div[@*='"+string+"']";
         Driver.get().findElement(By.xpath(messagePath)).click();
-        new OnlineStatusPopupPage().setStatusButton.click();
+        JavascriptExecutor executor = (JavascriptExecutor) Driver.get();
+        executor.executeScript("arguments[0].scrollIntoView(true);", onlineStatusPopupPage.setStatusButton);
+        executor.executeScript("arguments[0].click();", onlineStatusPopupPage.setStatusButton);
+
     }
 
     @FindBy(xpath = "//*[contains(@placeholder,'s your status?')]")
@@ -44,6 +52,9 @@ public class OnlineStatusPopupPage extends BasePage {
 
     @FindBy(css = ".multiselect__single")
     public WebElement clearOptions;
+
+    @FindBy(css = ".status-buttons__select")
+    public WebElement clearStatusMessage;
 
 
 }
