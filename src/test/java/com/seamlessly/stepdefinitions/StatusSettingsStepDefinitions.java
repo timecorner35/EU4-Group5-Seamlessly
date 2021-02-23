@@ -31,8 +31,6 @@ public class StatusSettingsStepDefinitions {
 
     @Then("the user should be able to see status")
     public void the_user_should_be_able_to_see_status() {
-
-        System.out.println(new OnlineStatusPopupPage().pstat.getText());
         Assert.assertTrue(new OnlineStatusPopupPage().pstat.isDisplayed());
     }
 
@@ -48,11 +46,10 @@ public class StatusSettingsStepDefinitions {
         new OnlineStatusPopupPage().profile.click();
 
         String actual = new OnlineStatusPopupPage().statusIcon.getAttribute("class");
-        if (string.equals("")){
-            Assert.assertEquals(string+actual,actual);
-        }else
-        Assert.assertTrue(actual.contains(string));
-        System.out.println(actual);
+        if (string.equals("")) {
+            Assert.assertEquals(string + actual, actual);
+        } else
+            Assert.assertTrue(actual.contains(string));
     }
 
     @Given("clicks {string} module")
@@ -70,9 +67,7 @@ public class StatusSettingsStepDefinitions {
         onlineStatusPopupPage.profile.click();
         onlineStatusPopupPage.clickSettingsModuleOptions("Status");
         onlineStatusPopupPage.inputBox.sendKeys(string);
-//        WebDriverWait wait = new WebDriverWait(Driver.get(),5);
-//        wait.until(ExpectedConditions.elementToBeClickable(onlineStatusPopupPage.setStatusButton));
-        WebDriverWait wait = new WebDriverWait(Driver.get(),5);
+        WebDriverWait wait = new WebDriverWait(Driver.get(), 5);
         wait.until(ExpectedConditions.elementToBeClickable(onlineStatusPopupPage.setStatusButton));
         actions.moveToElement(onlineStatusPopupPage.setStatusButton).click().perform();
 
@@ -91,26 +86,24 @@ public class StatusSettingsStepDefinitions {
 
         System.out.println(new OnlineStatusPopupPage().pstat.getText());
         String actual = new OnlineStatusPopupPage().pstat.getText();
-        System.out.println(string);
-        Assert.assertTrue(actual.contains(string));;
-        System.out.println(actual);
-
+        Assert.assertTrue(actual.contains(string));
 
     }
+
     @When("the user chooses deadline from {string}")
     public void the_user_chooses_deadline_from(String string) {
         OnlineStatusPopupPage onlineStatusPopupPage = new OnlineStatusPopupPage();
         onlineStatusPopupPage.chooseDeadline(string);
 
     }
+
     @Then("clear status message changes to {string}")
     public void clear_status_message_changes_to(String string) {
         OnlineStatusPopupPage onlineStatusPopupPage = new OnlineStatusPopupPage();
-        System.out.println(onlineStatusPopupPage.clearOptions.getText());
-        if (string.equals("1 hour")){
-            Assert.assertEquals("an hour",onlineStatusPopupPage.clearOptions.getText());
-        }else
-        Assert.assertEquals(string,onlineStatusPopupPage.clearOptions.getText());
+        if (string.equals("1 hour")) {
+            Assert.assertEquals("an hour", onlineStatusPopupPage.clearOptions.getText());
+        } else
+            Assert.assertEquals(string, onlineStatusPopupPage.clearOptions.getText());
 
     }
 
@@ -124,7 +117,6 @@ public class StatusSettingsStepDefinitions {
         executor.executeScript("arguments[0].scrollIntoView(true);", onlineStatusPopupPage.setStatusButton);
         executor.executeScript("arguments[0].click();", onlineStatusPopupPage.setStatusButton);
     }
-
 
 
 }
