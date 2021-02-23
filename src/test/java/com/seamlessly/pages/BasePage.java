@@ -47,6 +47,8 @@ public abstract class BasePage {
     public WebElement help;
     @FindBy(xpath = "//*[@data-id='logout']")
     public WebElement logut;
+    @FindBy(xpath = "//*[@class='user-status-menu-item__toggle']/span")
+    public WebElement statusIcon;
 
 
 //navigates Files, Photos, Activity...

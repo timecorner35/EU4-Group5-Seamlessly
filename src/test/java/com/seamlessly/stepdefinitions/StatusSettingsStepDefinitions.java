@@ -7,9 +7,13 @@ import com.seamlessly.utilities.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.cucumber.java.hu.De;
 import org.junit.Assert;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class StatusSettingsStepDefinitions {
     @Given("the user logged in as {string}")
@@ -42,7 +46,8 @@ public class StatusSettingsStepDefinitions {
     public void status_changes_to(String string) {
         Driver.get().navigate().refresh();
         new OnlineStatusPopupPage().profile.click();
-        String actual = new OnlineStatusPopupPage().pstat.getText();
+
+        String actual = new OnlineStatusPopupPage().statusIcon.getAttribute("class");
         if (string.equals("")){
             Assert.assertEquals(string+actual,actual);
         }else
@@ -60,11 +65,17 @@ public class StatusSettingsStepDefinitions {
     @When("user enters {string} into inputbox")
     public void user_enters_into_inputbox(String string) throws InterruptedException {
         OnlineStatusPopupPage onlineStatusPopupPage = new OnlineStatusPopupPage();
-        BrowserUtils.waitFor(1);
-        onlineStatusPopupPage.inputBox.clear();
+        onlineStatusPopupPage.clearStatusMessage.click();
+        Actions actions = new Actions(Driver.get());
+        onlineStatusPopupPage.profile.click();
+        onlineStatusPopupPage.clickSettingsModuleOptions("Status");
         onlineStatusPopupPage.inputBox.sendKeys(string);
-        BrowserUtils.waitFor(1);
-        onlineStatusPopupPage.setStatusButton.click();
+//        WebDriverWait wait = new WebDriverWait(Driver.get(),5);
+//        wait.until(ExpectedConditions.elementToBeClickable(onlineStatusPopupPage.setStatusButton));
+        WebDriverWait wait = new WebDriverWait(Driver.get(),5);
+        wait.until(ExpectedConditions.elementToBeClickable(onlineStatusPopupPage.setStatusButton));
+        actions.moveToElement(onlineStatusPopupPage.setStatusButton).click().perform();
+
     }
 
     @When("the user chooses messages from {string}")
@@ -77,10 +88,11 @@ public class StatusSettingsStepDefinitions {
     public void status_message_changes_to(String string) {
         Driver.get().navigate().refresh();
         new OnlineStatusPopupPage().profile.click();
-        BrowserUtils.waitFor(1);
+
         System.out.println(new OnlineStatusPopupPage().pstat.getText());
         String actual = new OnlineStatusPopupPage().pstat.getText();
-        Assert.assertTrue(actual.contains(string));
+        System.out.println(string);
+        Assert.assertTrue(actual.contains(string));;
         System.out.println(actual);
 
 
@@ -108,10 +120,10 @@ public class StatusSettingsStepDefinitions {
         onlineStatusPopupPage.profile.click();
         onlineStatusPopupPage.pstat.click();
         onlineStatusPopupPage.inputBox.clear();
-        BrowserUtils.waitFor(2);
-        onlineStatusPopupPage.setStatusButton.click();
+        JavascriptExecutor executor = (JavascriptExecutor) Driver.get();
+        executor.executeScript("arguments[0].scrollIntoView(true);", onlineStatusPopupPage.setStatusButton);
+        executor.executeScript("arguments[0].click();", onlineStatusPopupPage.setStatusButton);
     }
-
 
 
 
