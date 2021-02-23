@@ -44,7 +44,6 @@ public class StatusSettingsStepDefinitions {
     public void status_changes_to(String string) {
         Driver.get().navigate().refresh();
         new OnlineStatusPopupPage().profile.click();
-
         String actual = new OnlineStatusPopupPage().statusIcon.getAttribute("class");
         if (string.equals("")) {
             Assert.assertEquals(string + actual, actual);
@@ -61,15 +60,7 @@ public class StatusSettingsStepDefinitions {
 
     @When("user enters {string} into inputbox")
     public void user_enters_into_inputbox(String string) throws InterruptedException {
-        OnlineStatusPopupPage onlineStatusPopupPage = new OnlineStatusPopupPage();
-        onlineStatusPopupPage.clearStatusMessage.click();
-        Actions actions = new Actions(Driver.get());
-        onlineStatusPopupPage.profile.click();
-        onlineStatusPopupPage.clickSettingsModuleOptions("Status");
-        onlineStatusPopupPage.inputBox.sendKeys(string);
-        WebDriverWait wait = new WebDriverWait(Driver.get(), 5);
-        wait.until(ExpectedConditions.elementToBeClickable(onlineStatusPopupPage.setStatusButton));
-        actions.moveToElement(onlineStatusPopupPage.setStatusButton).click().perform();
+        new OnlineStatusPopupPage().enterInputbox(string);
 
     }
 
@@ -83,10 +74,7 @@ public class StatusSettingsStepDefinitions {
     public void status_message_changes_to(String string) {
         Driver.get().navigate().refresh();
         new OnlineStatusPopupPage().profile.click();
-
-        System.out.println(new OnlineStatusPopupPage().pstat.getText());
-        String actual = new OnlineStatusPopupPage().pstat.getText();
-        Assert.assertTrue(actual.contains(string));
+        Assert.assertTrue(new OnlineStatusPopupPage().pstat.getText().contains(string));
 
     }
 
@@ -109,13 +97,8 @@ public class StatusSettingsStepDefinitions {
 
     @When("the user deletes the message")
     public void the_user_deletes_the_message() {
-        OnlineStatusPopupPage onlineStatusPopupPage = new OnlineStatusPopupPage();
-        onlineStatusPopupPage.profile.click();
-        onlineStatusPopupPage.pstat.click();
-        onlineStatusPopupPage.inputBox.clear();
-        JavascriptExecutor executor = (JavascriptExecutor) Driver.get();
-        executor.executeScript("arguments[0].scrollIntoView(true);", onlineStatusPopupPage.setStatusButton);
-        executor.executeScript("arguments[0].click();", onlineStatusPopupPage.setStatusButton);
+         new OnlineStatusPopupPage().deleteMessage();
+
     }
 
 
