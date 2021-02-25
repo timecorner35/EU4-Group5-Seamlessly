@@ -16,13 +16,15 @@ public class FilesPage extends BasePage{
     @FindBy(xpath = "//span[@class='nametext']")
     public List<WebElement> folderFileList;
 
-    @FindBy(xpath = "//div[@id='rightClickMenus']/ul/li")
-    public List<WebElement> rightClickMenu;
+    @FindBy(xpath = "//*[@data-action='Rename']")
+    public WebElement rename;
 
-    @FindBy(xpath = "//div[@id='rightClickDetector']")
-    public WebElement hiddenBtn;
+    @FindBy(className = "innernametext")
+    public List<WebElement> fileFolderText;
 
 
+//span[@class='icon icon icon-rename']
+//*[@data-action='Rename']
 }
 
 
