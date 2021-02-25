@@ -42,8 +42,8 @@ public class FilesStepDefs {
         filesPage.newFile.click();
         actions.sendKeys("New Puppy",Keys.ENTER).perform();
         filesPage.newFilePageCloseIcon.click();
-        filesPage.newFileTitleCloseIcon.click();
         BrowserUtils.waitFor(5);
+        filesPage.newFileTitleCloseIcon.click();
         filesPage.folderFile3dot.click();
         filesPage.rename.click();
         actions.sendKeys("Always",Keys.ENTER).perform();
