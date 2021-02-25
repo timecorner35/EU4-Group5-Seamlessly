@@ -13,7 +13,7 @@ Feature: Files
 	#AC1: User should be able to change file/folder name and update correctly when using Rename option
 	@SEAM-186
 	Scenario: Verify user able to change file/folder name
-		When the user chooses a "New Folder1"
-		And  the user clicks on "Rename"
+		When the user chooses a "New Folder"
+		And  the user clicks on Rename
 		Then the user should able to see changed folder name
 
