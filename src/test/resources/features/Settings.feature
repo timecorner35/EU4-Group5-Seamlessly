@@ -4,7 +4,7 @@ Feature:    Changing profile settings
   @wip
   Background:
     Given the user logged in as "Ritesh"
-    When the user navigates to "Settings" tab and clicks
+    When the user navigates to "Settings" tab
     And clicks "Settings" module
 
   Scenario: Verify that user can change and save the settings
