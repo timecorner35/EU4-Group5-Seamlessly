@@ -1,5 +1,6 @@
 package com.seamlessly.pages;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -39,6 +40,37 @@ public class FilesPage extends BasePage{
 
     @FindBy(className = "innernametext")
     public List<WebElement> fileFolderText;
+
+    @FindBy(css = ".icon.icon-details")
+    public WebElement details;
+
+    @FindBy (id = "app-sidebar-vue")
+    public WebElement sidePage;
+
+    @FindBy(css = ".app-sidebar-tabs__tab-icon.icon-activity")
+    public WebElement sidePageActivity;
+
+    @FindBy(id = "commentsTabView")
+    public WebElement sidePageComments;
+
+    @FindBy(id ="sharing")
+    public WebElement sidePageSharing;
+
+    @FindBy(id = "versionsTabView")
+    public WebElement sidePageVersions;
+
+
+    public void createTextFile(String s){
+        plusIcon.click();
+        newFile.click();
+        actions.sendKeys(s, Keys.ENTER).perform();
+    }
+
+    public void createFolder(String s){
+        plusIcon.click();
+        newFolder.click();
+        actions.sendKeys(s,Keys.ENTER).perform();
+    }
 
 
 

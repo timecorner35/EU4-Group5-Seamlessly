@@ -1,0 +1,16 @@
+@yus
+Feature:
+
+	Background:
+		#@SEAM-173
+		Given the user has already logged in as "yusuf"
+		#@SEAM-202
+		When the user creates text file named "text"
+		And the user creates folder named "Folder1"
+
+
+	@SEAM-201
+	Scenario: Verify that details side page is shown when clicked 3 dots
+		Given the user is on "Files" page
+		When the user clicks on 3 dots
+		Then details side page should show up

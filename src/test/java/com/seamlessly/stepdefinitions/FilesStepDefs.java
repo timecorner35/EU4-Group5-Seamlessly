@@ -3,10 +3,13 @@ package com.seamlessly.stepdefinitions;
 import com.seamlessly.pages.FilesPage;
 import com.seamlessly.utilities.BrowserUtils;
 import com.seamlessly.utilities.Driver;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 public class FilesStepDefs {
@@ -61,4 +64,42 @@ public class FilesStepDefs {
     }
 
 
+    @Then("details side page should show up")
+    public void detailsSidePageShouldShowUp() {
+        Assert.assertTrue(filesPage.sidePage.isDisplayed());
+
+    }
+
+    @When("the user clicks on {int} dots")
+    public void theUserClicksOnDots(int arg0) {
+        filesPage.folderFile3dot.click();
+        filesPage.details.click();
+
+    }
+
+    @Given("the user is on {string} page")
+    public void theUserIsOnPage(String s) {
+        Driver.get().get("https://qa.seamlessly.net/index.php/apps/files/?dir=/&fileid=19391");
+
+    }
+
+    @When("the user creates text file named {string}")
+    public void theUserCreatesTextFileNamed(String s) {
+        filesPage.createTextFile(s);
+        Driver.get().navigate().refresh();
+
+    }
+
+    @And("the user creates folder named {string}")
+    public void theUserCreatesFolderNamed(String s) {
+        filesPage.createFolder(s);
+        Driver.get().navigate().refresh();
+
+    }
+
+    @Then("created files shown on the page")
+    public void createdFilesShownOnThePage() {
+        System.out.println(filesPage.fileFolderText.size());
+        Assert.assertTrue( filesPage.fileFolderText.size()>=2);
+    }
 }
