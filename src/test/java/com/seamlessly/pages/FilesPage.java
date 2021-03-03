@@ -70,9 +70,15 @@ public class FilesPage extends BasePage{
 
     @FindBy(css = ".app-sidebar-header__maintitle")
     public WebElement sidePageTitle;
+    
+       @FindBy(xpath = "//*[@data-action='Delete']")
+    public WebElement delete;
 
     @FindBy(xpath = "//*[@id='app-sidebar-vue']//*[contains(@style,'folder.svg')]")
     public WebElement folderIcon;
+    
+     @FindBy(xpath = "//span[@class='nametext']")
+    public List<WebElement> folderFileList;
 
     
 
