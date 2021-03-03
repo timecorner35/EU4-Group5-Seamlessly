@@ -108,6 +108,7 @@ public class FilesStepDefs {
         Assert.assertTrue(filesPage.fileFolderText.size() >= 2);
     }
 
+
     @Then("the title should match file name")
     public void theTitleShouldMatchFileName() {
         filesPage.checkNamesAndDelete();
@@ -129,5 +130,73 @@ public class FilesStepDefs {
 
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @When("the user added {string} to {string}")
+    public void the_user_added_to(String string, String string2) {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+
+    @Then("the {string} can be seen on {string} tab")
+    public void the_can_be_seen_on_tab(String string, String string2) {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
