@@ -1,7 +1,13 @@
 package com.seamlessly.pages;
 
+
 import com.seamlessly.utilities.Driver;
 import org.openqa.selenium.By;
+
+import com.seamlessly.utilities.BrowserUtils;
+import com.seamlessly.utilities.Driver;
+import org.junit.Assert;
+
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -52,6 +58,7 @@ public class FilesPage extends BasePage{
     @FindBy(id = "versionsTabView")
     public WebElement sidePageVersions;
 
+
     @FindBy(css = "div[class='message']")
     public WebElement commentMsgInputBox;
 
@@ -60,6 +67,11 @@ public class FilesPage extends BasePage{
 
     @FindBy(xpath = "//li[@class='comment']")
     public WebElement comments;
+
+    @FindBy(css = ".app-sidebar-header__maintitle")
+    public WebElement sidePageTitle;
+
+
 
     public void createTextFile(String s){
         plusIcon.click();
@@ -72,6 +84,7 @@ public class FilesPage extends BasePage{
         newFolder.click();
         actions.sendKeys(s,Keys.ENTER).perform();
     }
+
 
     public void fileFolder3dotOptions(String option){
         folderFile3dot.click();
@@ -86,6 +99,20 @@ public class FilesPage extends BasePage{
     public void leaveComment(String str){
         commentMsgInputBox.sendKeys(str);
         submitComment.click();
+
+    public void checkNamesAndDelete(){
+        Driver.get().navigate().refresh();
+
+        while (folderFileList.size()>0) {
+            folderFile3dot.click();
+            details.click();
+            BrowserUtils.waitFor(3);
+            Assert.assertTrue(sidePageTitle.getText().contains(fileFolderText.get(0).getText()));
+            folderFile3dot.click();
+            delete.click();
+            Driver.get().navigate().refresh();
+        }
+
     }
 
 

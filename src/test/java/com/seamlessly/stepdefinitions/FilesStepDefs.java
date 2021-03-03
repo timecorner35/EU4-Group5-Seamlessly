@@ -10,6 +10,8 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class FilesStepDefs {
 
@@ -107,6 +109,17 @@ public class FilesStepDefs {
     @Then("the user should able to see that comment")
     public void the_user_should_able_to_see_that_comment() {
         Assert.assertTrue(filesPage.comments.isDisplayed());
+    }
+
+
+    @Then("the title should match file name")
+    public void theTitleShouldMatchFileName() {
+       filesPage.checkNamesAndDelete();
+
+    }
+
+    @Then("side page should show following options for files")
+    public void sidePageShouldShowFollowingOptionsForFiles() {
     }
 
 
