@@ -14,7 +14,7 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-public class FilesPage extends BasePage{
+public class FilesPage extends BasePage {
 
     @FindBy(xpath = "//span[@class='icon icon-add']")
     public WebElement plusIcon;
@@ -26,7 +26,7 @@ public class FilesPage extends BasePage{
     public WebElement newFile;
 
     @FindBy(xpath = "//div//button[@class='action-item action-item--single header-close icon-close undefined undefined has-tooltip']")
-    public  WebElement newFilePageCloseIcon;
+    public WebElement newFilePageCloseIcon;
 
     @FindBy(xpath = "//a[@title='close']")
     public WebElement newFileTitleCloseIcon;
@@ -43,7 +43,7 @@ public class FilesPage extends BasePage{
     @FindBy(css = ".icon.icon-details")
     public WebElement details;
 
-    @FindBy (id = "app-sidebar-vue")
+    @FindBy(id = "app-sidebar-vue")
     public WebElement sidePage;
 
     @FindBy(css = ".app-sidebar-tabs__tab-icon.icon-activity")
@@ -52,7 +52,7 @@ public class FilesPage extends BasePage{
     @FindBy(id = "commentsTabView")
     public WebElement sidePageComments;
 
-    @FindBy(id ="sharing")
+    @FindBy(id = "sharing")
     public WebElement sidePageSharing;
 
     @FindBy(id = "versionsTabView")
@@ -71,52 +71,60 @@ public class FilesPage extends BasePage{
     @FindBy(css = ".app-sidebar-header__maintitle")
     public WebElement sidePageTitle;
 
+    @FindBy(xpath = "//*[@data-action='Delete']")
+    public WebElement delete;
+
+    @FindBy(xpath = "//*[@id='app-sidebar-vue']//*[contains(@style,'folder.svg')]")
+    public WebElement folderIcon;
 
 
-    public void createTextFile(String s){
+    public void createTextFile(String s) {
         plusIcon.click();
         newFile.click();
         actions.sendKeys(s, Keys.ENTER).perform();
     }
 
-    public void createFolder(String s){
+    public void createFolder(String s) {
         plusIcon.click();
         newFolder.click();
-        actions.sendKeys(s,Keys.ENTER).perform();
+        actions.sendKeys(s, Keys.ENTER).perform();
     }
 
 
-    public void fileFolder3dotOptions(String option){
+    public void fileFolder3dotOptions(String option) {
         folderFile3dot.click();
         Driver.get().findElement(By.xpath("//*[@data-action='" + option + "']")).click();
     }
 
-    public void fileFolderDetailsOption(String s){
-        String xpath="//a[@id='"+s+"TabView']";
+    @FindBy(xpath = "//span[@class='nametext']")
+    public List<WebElement> folderFileList;
+
+    public void fileFolderDetailsOption(String s) {
+        String xpath = "//a[@id='" + s + "TabView']";
         Driver.get().findElement(By.xpath(xpath)).click();
     }
 
-    public void leaveComment(String str){
+    public void leaveComment(String str) {
         commentMsgInputBox.sendKeys(str);
-        submitComment.click();
+        submitComment.click();}
 
-    public void checkNamesAndDelete(){
-        Driver.get().navigate().refresh();
-
-        while (folderFileList.size()>0) {
-            folderFile3dot.click();
-            details.click();
-            BrowserUtils.waitFor(3);
-            Assert.assertTrue(sidePageTitle.getText().contains(fileFolderText.get(0).getText()));
-            folderFile3dot.click();
-            delete.click();
+        public void checkNamesAndDelete () {
             Driver.get().navigate().refresh();
+
+            while (folderFileList.size() > 0) {
+                folderFile3dot.click();
+                details.click();
+                BrowserUtils.waitFor(3);
+                Assert.assertTrue(sidePageTitle.getText().contains(fileFolderText.get(0).getText()));
+                folderFile3dot.click();
+                delete.click();
+                Driver.get().navigate().refresh();
+            }
+
         }
+
 
     }
 
-
-
-}
 
 

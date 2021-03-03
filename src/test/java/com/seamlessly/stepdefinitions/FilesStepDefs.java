@@ -8,6 +8,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -15,23 +16,23 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class FilesStepDefs {
 
-    FilesPage filesPage=new FilesPage();
+    FilesPage filesPage = new FilesPage();
     Actions actions = new Actions(Driver.get());
 
     @When("the user clicks on {string}")
     public void the_user_clicks_on(String string) {
         filesPage.createFolder("New Folder");
         filesPage.fileFolder3dotOptions("Rename");
-        actions.sendKeys("Cybertek",Keys.ENTER).perform();
+        actions.sendKeys("Cybertek", Keys.ENTER).perform();
         BrowserUtils.waitFor(2);
 
     }
 
     @Then("the user should able to see changed folder name")
-    public void the_user_should_able_to_see_changed_folder_name(){
-        String actual ="Cybertek";
-        String expected=filesPage.fileFolderText.get(0).getText();
-        Assert.assertEquals(expected,actual);
+    public void the_user_should_able_to_see_changed_folder_name() {
+        String actual = "Cybertek";
+        String expected = filesPage.fileFolderText.get(0).getText();
+        Assert.assertEquals(expected, actual);
         filesPage.fileFolder3dotOptions("Delete");
         BrowserUtils.waitFor(2);
     }
@@ -44,15 +45,15 @@ public class FilesStepDefs {
         filesPage.newFileTitleCloseIcon.click();
         BrowserUtils.waitFor(3);
         filesPage.fileFolder3dotOptions("Rename");
-        actions.sendKeys("Always",Keys.ENTER).perform();
+        actions.sendKeys("Always", Keys.ENTER).perform();
         BrowserUtils.waitFor(2);
     }
 
     @Then("the user should able to see changed file name")
     public void the_user_should_able_to_see_changed_file_name() {
-        String actual ="Always";
-        String expected=filesPage.fileFolderText.get(0).getText();
-        Assert.assertEquals(expected,actual);
+        String actual = "Always";
+        String expected = filesPage.fileFolderText.get(0).getText();
+        Assert.assertEquals(expected, actual);
         filesPage.fileFolder3dotOptions("Delete");
         BrowserUtils.waitFor(2);
     }
@@ -95,14 +96,14 @@ public class FilesStepDefs {
     @Then("created files shown on the page")
     public void createdFilesShownOnThePage() {
         System.out.println(filesPage.fileFolderText.size());
-        Assert.assertTrue( filesPage.fileFolderText.size()>=2);
+        Assert.assertTrue(filesPage.fileFolderText.size() >= 2);
     }
 
     @When("the user leaves comments")
     public void the_user_leaves_comments() {
-       filesPage.fileFolder3dotOptions("Details");
-       filesPage.fileFolderDetailsOption("comments");
-       filesPage.leaveComment("Hi there");
+        filesPage.fileFolder3dotOptions("Details");
+        filesPage.fileFolderDetailsOption("comments");
+        filesPage.leaveComment("Hi there");
 
     }
 
@@ -114,56 +115,25 @@ public class FilesStepDefs {
 
     @Then("the title should match file name")
     public void theTitleShouldMatchFileName() {
-       filesPage.checkNamesAndDelete();
+        filesPage.checkNamesAndDelete();
 
     }
 
-    @Then("side page should show following options for files")
-    public void sidePageShouldShowFollowingOptionsForFiles() {
+    @Then("side page should show following options for folders")
+    public void sidePageShouldShowFollowingOptionsForFolders(String s) {
+        while (filesPage.folderFileList.size() > 0) {
+            filesPage.folderFile3dot.click();
+            filesPage.details.click();
+            BrowserUtils.waitFor(3);
+            if (filesPage.folderIcon.isDisplayed()) {
+                Assert.assertTrue(Driver.get().findElement(By.id("" + s.toLowerCase() + "TabView")).isDisplayed());
+                filesPage.folderFile3dot.click();
+                filesPage.delete.click();
+                Driver.get().navigate().refresh();
+            }
+
+        }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     @When("the user added {string} to {string}")
@@ -177,15 +147,6 @@ public class FilesStepDefs {
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
-
-
-
-
-
-
-
-
-
 
 
 

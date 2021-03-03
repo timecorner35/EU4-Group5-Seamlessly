@@ -14,18 +14,18 @@ Feature:File/Folder
     When the user clicks on 3 dots
     Then details side page should show up
 
-  @yus
+
   @SEAM-206
   Scenario:Verify that details reflects correct information
     Given the user is on "Files" page
     When the user clicks on 3 dots
     Then the title should match file name
-
-  Scenario : Verify that options on side page are shown accordingly based on file type
+  @yus
+  Scenario Outline:Verify that options on side page are shown accordingly based on file type
     Given the user is on "Files" page
     When the user clicks on 3 dots
-    Then side page should show following options for files
-
+    Then side page should show following options for folders
+Examples:
       | Activity |
       | Comments |
       | Sharing  |
