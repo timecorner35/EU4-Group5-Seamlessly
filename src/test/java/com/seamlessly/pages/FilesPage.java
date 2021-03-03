@@ -65,6 +65,11 @@ public class FilesPage extends BasePage{
     @FindBy(css = ".app-sidebar-header__maintitle")
     public WebElement sidePageTitle;
 
+    @FindBy(xpath = "//*[@id='app-sidebar-vue']//*[contains(@style,'folder.svg')]")
+    public WebElement folderIcon;
+
+    
+
 
     public void createTextFile(String s){
         plusIcon.click();
@@ -91,6 +96,8 @@ public class FilesPage extends BasePage{
             Driver.get().navigate().refresh();
         }
     }
+
+
 
 
 
