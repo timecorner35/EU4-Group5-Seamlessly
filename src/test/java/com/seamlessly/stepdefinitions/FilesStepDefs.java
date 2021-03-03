@@ -11,6 +11,8 @@ import org.junit.Assert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class FilesStepDefs {
 
@@ -101,6 +103,17 @@ public class FilesStepDefs {
     public void createdFilesShownOnThePage() {
         System.out.println(filesPage.fileFolderText.size());
         Assert.assertTrue( filesPage.fileFolderText.size()>=2);
+    }
+
+
+    @Then("the title should match file name")
+    public void theTitleShouldMatchFileName() {
+       filesPage.checkNamesAndDelete();
+
+    }
+
+    @Then("side page should show following options for files")
+    public void sidePageShouldShowFollowingOptionsForFiles() {
     }
 
 
