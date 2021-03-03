@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class SettingsPage extends BasePage{
-    @FindBy(id ="displayName" )
+    @FindBy(id ="displayname" )
     public WebElement nameInput;
     @FindBy(id = "email")
     public WebElement emailInput;
