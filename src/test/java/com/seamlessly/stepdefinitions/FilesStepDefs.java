@@ -23,14 +23,6 @@ public class FilesStepDefs {
 
     @When("the user clicks on {string}")
     public void the_user_clicks_on(String string) {
-
-        filesPage.plusIcon.click();
-        filesPage.newFolder.click();
-        actions.sendKeys("New World", Keys.ENTER).perform();
-        filesPage.folderFile3dot.click();
-        filesPage.rename.click();
-        actions.sendKeys("Cybertek", Keys.ENTER).perform();
-
         filesPage.createFolder("New Folder");
         filesPage.fileFolder3dotOptions("Rename");
         actions.sendKeys("Cybertek",Keys.ENTER).perform();
@@ -40,44 +32,24 @@ public class FilesStepDefs {
     }
 
     @Then("the user should able to see changed folder name")
-
     public void the_user_should_able_to_see_changed_folder_name() {
         String actual = "Cybertek";
         String expected = filesPage.fileFolderText.get(0).getText();
         Assert.assertEquals(expected, actual);
-        filesPage.folderFile3dot.click();
-        filesPage.delete.click();
-
-    public void the_user_should_able_to_see_changed_folder_name(){
-        String actual ="Cybertek";
-        String expected=filesPage.fileFolderText.get(0).getText();
-        Assert.assertEquals(expected,actual);
         filesPage.fileFolder3dotOptions("Delete");
-
         BrowserUtils.waitFor(2);
     }
 
+
     @When("the user clicks on rename on files")
     public void the_user_clicks_on_rename_on_files() {
-
-        filesPage.plusIcon.click();
-        filesPage.newFile.click();
-        actions.sendKeys("New Puppy", Keys.ENTER).perform();
-
         filesPage.createTextFile("New puppy");
-
         filesPage.newFilePageCloseIcon.click();
         BrowserUtils.waitFor(3);
         filesPage.newFileTitleCloseIcon.click();
-
-        filesPage.folderFile3dot.click();
-        filesPage.rename.click();
-        actions.sendKeys("Always", Keys.ENTER).perform();
-
         BrowserUtils.waitFor(3);
         filesPage.fileFolder3dotOptions("Rename");
         actions.sendKeys("Always",Keys.ENTER).perform();
-
         BrowserUtils.waitFor(2);
     }
 
@@ -87,14 +59,7 @@ public class FilesStepDefs {
         String actual = "Always";
         String expected = filesPage.fileFolderText.get(0).getText();
         Assert.assertEquals(expected, actual);
-        filesPage.folderFile3dot.click();
-        filesPage.delete.click();
-
-        String actual ="Always";
-        String expected=filesPage.fileFolderText.get(0).getText();
-        Assert.assertEquals(expected,actual);
         filesPage.fileFolder3dotOptions("Delete");
-
         BrowserUtils.waitFor(2);
     }
 
@@ -159,8 +124,8 @@ public class FilesStepDefs {
 
     }
 
-    @Then("side page should show following options for folders")
-    public void sidePageShouldShowFollowingOptionsForFolders(String s) {
+    @Then("side page should show following {string} for folders")
+    public void sidePageShouldShowFollowingForFolders(String s) {
         while (filesPage.folderFileList.size() > 0) {
             filesPage.folderFile3dot.click();
             filesPage.details.click();
@@ -173,6 +138,7 @@ public class FilesStepDefs {
             }
 
         }
+
     }
 
 
@@ -191,15 +157,6 @@ public class FilesStepDefs {
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
-
-
-
-
-
-
-
-
-
 
 
 

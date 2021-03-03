@@ -109,7 +109,7 @@ public class FilesPage extends BasePage{
 
     public void leaveComment(String str){
         commentMsgInputBox.sendKeys(str);
-        submitComment.click();
+        submitComment.click();}
 
     public void checkNamesAndDelete(){
         Driver.get().navigate().refresh();
@@ -131,5 +131,6 @@ public class FilesPage extends BasePage{
 
 
 }
+
 
 

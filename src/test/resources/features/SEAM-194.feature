@@ -22,12 +22,13 @@ Feature:File/Folder
     Then the title should match file name
 
   @yus
-  @SEAM-209
-  Scenario:Verify that options on side page are shown accordingly based on file type
+    @SEAM-209
+  Scenario Outline:Verify that options on side page are shown accordingly based on file type
     Given the user is on "Files" page
     When the user clicks on 3 dots
-    Then side page should show following options for folders
-
+    Then side page should show following "<options>" for folders
+    Examples:
+      | options  |
       | Activity |
       | Comments |
       | Sharing  |
