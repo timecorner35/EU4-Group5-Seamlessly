@@ -130,28 +130,7 @@ public class FilesStepDefs {
 
     @Then("side page should show following for folders")
     public void sidePageShouldShowFollowingForFolders(List<String>s) {
-        while (filesPage.folderFileList.size() > 0) {
-            filesPage.folderFile3dot.click();
-            filesPage.details.click();
-            BrowserUtils.waitFor(3);
-            List<String> tabs = new ArrayList<>();
-            for (WebElement o : filesPage.sidePageSideTab) {
-                tabs.add(o.getText());
-            }
-            try {
-                Assert.assertTrue(filesPage.folderIcon.isDisplayed());
-                Assert.assertTrue(!tabs.contains(s.get(3))&& tabs.size()==3);
-            }catch (NoSuchElementException e){
-                Assert.assertTrue(tabs.containsAll(s));
-            }finally {
-                filesPage.folderFile3dot.click();
-                filesPage.delete.click();
-                Driver.get().navigate().refresh();
-            }
-
-
-
-        }
+       filesPage.checkAvailableOptions(s);
 
     }
 
