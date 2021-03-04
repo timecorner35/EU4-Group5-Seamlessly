@@ -80,6 +80,9 @@ public class FilesPage extends BasePage{
      @FindBy(xpath = "//span[@class='nametext']")
     public List<WebElement> folderFileList;
 
+     @FindBy(xpath = "//*[@class='app-sidebar-tabs__nav']//ul/li")
+     public List<WebElement> sidePageSideTab;
+
     
 
 
