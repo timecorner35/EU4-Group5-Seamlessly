@@ -1,4 +1,4 @@
-@SEAM-203
+@SEAM-203 @yus
 Feature:File/Folder Details
 
   Background:

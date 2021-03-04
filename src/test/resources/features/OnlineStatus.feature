@@ -1,4 +1,4 @@
-@SEAM-183
+@SEAM-183 @yus
 Feature: Online Status Changing
 
   Background:
