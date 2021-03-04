@@ -10,10 +10,14 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 public class FilesStepDefs {
@@ -124,24 +128,11 @@ public class FilesStepDefs {
 
     }
 
-    @Then("side page should show following {string} for folders")
-    public void sidePageShouldShowFollowingForFolders(String s) {
-        while (filesPage.folderFileList.size() > 0) {
-            filesPage.folderFile3dot.click();
-            filesPage.details.click();
-            BrowserUtils.waitFor(3);
-            if (filesPage.folderIcon.isDisplayed()) {
-                Assert.assertTrue(Driver.get().findElement(By.id("" + s.toLowerCase() + "TabView")).isDisplayed());
-                filesPage.folderFile3dot.click();
-                filesPage.delete.click();
-                Driver.get().navigate().refresh();
-            }
-
-        }
+    @Then("side page should show following for folders")
+    public void sidePageShouldShowFollowingForFolders(List<String>s) {
+       filesPage.checkAvailableOptions(s);
 
     }
-
-
 
 
 
