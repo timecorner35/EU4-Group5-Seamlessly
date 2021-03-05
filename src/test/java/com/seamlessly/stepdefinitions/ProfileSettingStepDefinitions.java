@@ -1,7 +1,7 @@
 package com.seamlessly.stepdefinitions;
 
 import com.seamlessly.pages.SettingsPage;
-import com.sun.xml.internal.ws.api.config.management.policy.ManagementAssertion;
+
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
