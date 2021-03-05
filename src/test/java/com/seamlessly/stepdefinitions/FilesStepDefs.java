@@ -108,8 +108,8 @@ public class FilesStepDefs {
         Assert.assertTrue(filesPage.fileFolderText.size() >= 2);
     }
 
-    @When("the user leaves comments")
-    public void the_user_leaves_comments() {
+    @When("the user leaves comments for a {string}")
+    public void theUserLeavesCommentsForA(String arg) {
        filesPage.fileFolder3dotOptions("Details");
        filesPage.fileFolderDetailsOption("comments");
        filesPage.leaveComment("Hi there");
@@ -147,6 +147,17 @@ public class FilesStepDefs {
     public void the_can_be_seen_on_tab(String string, String string2) {
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
+    }
+    @When("the user clicks {string}")
+    public void the_user_clicks(String string, io.cucumber.datatable.DataTable dataTable) {
+        filesPage.fileFolder3dotOptions("Details");
+        filesPage.fileFolderDetailsOption("comments");
+        filesPage.setEditComment("change comment");
+    }
+
+    @Then("the user should able to see changes")
+    public void the_user_should_able_to_see_changes() {
+        Assert.assertTrue(filesPage.comments.isDisplayed());
     }
 
 

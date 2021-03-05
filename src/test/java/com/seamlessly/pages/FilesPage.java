@@ -61,10 +61,10 @@ public class FilesPage extends BasePage {
     public WebElement sidePageVersions;
 
 
-    @FindBy(css = "div[class='message']")
+    @FindBy(xpath = "(//div[@class='message'])[1]")
     public WebElement commentMsgInputBox;
 
-    @FindBy(css = "input[class='submit icon-confirm has-tooltip']")
+    @FindBy(xpath = "(//input[@class='submit icon-confirm has-tooltip'])[1]")
     public WebElement submitComment;
 
     @FindBy(xpath = "//li[@class='comment']")
@@ -85,6 +85,17 @@ public class FilesPage extends BasePage {
     @FindBy(xpath = "//*[@class='app-sidebar-tabs__nav']//ul/li")
     public List<WebElement> sidePageSideTab;
 
+    @FindBy(css = "a[class='action more icon icon-more has-tooltip']")
+    public WebElement comment3dot;
+
+    @FindBy(css = "a[class='menuitem action edit permanent']")
+    public WebElement editComment;
+
+    @FindBy(xpath = "(//form/div[@class='message' ])[2]")
+    public WebElement editCommentInputBox;
+
+    @FindBy(xpath = "(//input[@class='submit icon-confirm has-tooltip'])[2]")
+    public WebElement editCommentSubmit;
 
     public void createTextFile(String s) {
         plusIcon.click();
@@ -152,6 +163,15 @@ public class FilesPage extends BasePage {
 
         }
     }
+
+    public void setEditComment(String comment){
+        comment3dot.click();
+        editComment.click();
+        editCommentInputBox.clear();
+        editCommentInputBox.sendKeys(comment);
+        editCommentSubmit.click();
+    }
+
 
 
 }
