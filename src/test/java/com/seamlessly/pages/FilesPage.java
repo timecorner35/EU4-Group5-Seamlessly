@@ -59,6 +59,14 @@ public class FilesPage extends BasePage{
     @FindBy(id = "versionsTabView")
     public WebElement sidePageVersions;
 
+    @FindBy(xpath ="//*[@data-action='Favorite']")
+    public WebElement addToFav;
+
+    @FindBy(css = ".nav-icon-favorites.svg")
+    public WebElement favTab;
+
+    @FindBy(xpath = "(//span[text()='Folder1'])[3]")
+    public WebElement favTabFolder;
 
     public void createTextFile(String s){
         plusIcon.click();
