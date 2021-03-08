@@ -4,12 +4,12 @@ Feature:
 	Background:
 		#@SEAM-205
 		Given the user has already logged in as "elif"
-		
+
 		#@SEAM-202
-		When the user creates text file named "text"
-		And the user creates folder named "Folder1"
+	    When the user creates text file named "New text document"
+		And the user creates folder named "New Folder"
 		Then created files shown on the page
-		
+
 
 	#{color:#00875a}*User Story:*{color}
 	#As a user I should be able to add a file/folder into my favorites and see them under {color:#172b4d}Favorites tab.{color}
