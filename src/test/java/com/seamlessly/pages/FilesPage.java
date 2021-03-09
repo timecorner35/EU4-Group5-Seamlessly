@@ -60,6 +60,20 @@ public class FilesPage extends BasePage {
     @FindBy(id = "versionsTabView")
     public WebElement sidePageVersions;
 
+    @FindBy(xpath = "(//*[@class='nametext'])[2]")
+    public WebElement favfolder;
+
+    @FindBy(xpath ="//span[text()='Add to favourites']")
+    public WebElement addToFav;
+
+    @FindBy(css = ".nav-icon-favorites.svg")
+    public WebElement favTab;
+
+    @FindBy(xpath = "(//span[text()='Folder1'])[3]")
+    public WebElement favTabFolder;
+
+
+
 
     @FindBy(xpath = "(//div[@class='message'])[1]")
     public WebElement commentMsgInputBox;

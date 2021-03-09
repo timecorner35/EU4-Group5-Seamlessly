@@ -138,15 +138,25 @@ public class FilesStepDefs {
 
 
     @When("the user added {string} to {string}")
-    public void the_user_added_to(String string, String string2) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    public void the_user_added_to(String string,String string2) throws InterruptedException {
+
+        BrowserUtils.waitFor(3);
+        filesPage.folderFile3dot.click();
+        Thread.sleep(3000);
+        filesPage.addToFav.click();
+
+
     }
 
     @Then("the {string} can be seen on {string} tab")
-    public void the_can_be_seen_on_tab(String string, String string2) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    public void the_can_be_seen_on_tab(String string,String string2) {
+
+        filesPage.favTab.click();
+        Assert.assertTrue(filesPage.favfolder.getText().contains(string));
+        filesPage.navigateToTab("Home");
+        filesPage.folderFile3dot.click();
+        filesPage.delete.click();
+
     }
     @When("the user clicks {string}")
     public void the_user_clicks(String string, io.cucumber.datatable.DataTable dataTable) {
