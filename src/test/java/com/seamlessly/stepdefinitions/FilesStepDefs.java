@@ -148,22 +148,24 @@ public class FilesStepDefs {
 
 
     @When("the user added {string} to {string}")
-    public void the_user_added_to(String files, String favourites) {
+    public void the_user_added_to(String string,String string2) throws InterruptedException {
+
+        BrowserUtils.waitFor(3);
         filesPage.folderFile3dot.click();
+        Thread.sleep(3000);
         filesPage.addToFav.click();
 
 
     }
 
     @Then("the {string} can be seen on {string} tab")
-    public void the_can_be_seen_on_tab(String string, String string2) {
+    public void the_can_be_seen_on_tab(String string,String string2) {
+
         filesPage.favTab.click();
-
-       // String expected = filesPage.newFolder.getText();
-        //String actualResult=filesPage.favTabFolder.getText();
-        //Assert.assertEquals(actualResult,expected);
-
-
+        Assert.assertTrue(filesPage.favfolder.getText().contains(string));
+        filesPage.navigateToTab("Home");
+        filesPage.folderFile3dot.click();
+        filesPage.delete.click();
 
     }
 
