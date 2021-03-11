@@ -108,8 +108,8 @@ public class FilesStepDefs {
         Assert.assertTrue(filesPage.fileFolderText.size() >= 2);
     }
 
-    @When("the user leaves comments for a {string}")
-    public void theUserLeavesCommentsForA(String arg) {
+    @When("the user leaves comments for a folder")
+    public void theUserLeavesCommentsForA() {
        filesPage.fileFolder3dotOptions("Details");
        filesPage.fileFolderDetailsOption("comments");
        filesPage.leaveComment("Hi there");
@@ -158,8 +158,8 @@ public class FilesStepDefs {
         filesPage.delete.click();
 
     }
-    @When("the user clicks {string}")
-    public void the_user_clicks(String string, io.cucumber.datatable.DataTable dataTable) {
+    @When("the user clicks Edit comment")
+    public void the_user_clicks_edit_comment() {
         filesPage.fileFolder3dotOptions("Details");
         filesPage.fileFolderDetailsOption("comments");
         filesPage.setEditComment("change comment");
@@ -168,6 +168,18 @@ public class FilesStepDefs {
     @Then("the user should able to see changes")
     public void the_user_should_able_to_see_changes() {
         Assert.assertTrue(filesPage.comments.isDisplayed());
+    }
+
+    @When("the user clicks Delete comment")
+    public void the_user_clicks_Delete_comment() {
+        //filesPage.chooseFileFolder("Notes","Details");
+        filesPage.fileFolder3dotOptions("Details");
+        filesPage.fileFolderDetailsOption("comments");
+        filesPage.setDeleteComment();
+    }
+    @Then("the user should not see any comments")
+    public void the_user_should_not_see_any_comments() {
+        Assert.assertTrue(filesPage.noComments.size() != 0);
     }
 
 

@@ -30,9 +30,14 @@ Feature: Files / Folders
 	#AC3: Previously made comments can be edited or deleted.
 	@SEAM-210
 	Scenario: Verify user able to leave a comment for folder
-		When the user leaves comments for a "Notes"
+		When the user leaves comments for a folder
 		Then the user should able to see that comment
-	@SEAM-211 @wip
+	@SEAM-211
 	Scenario: Verify comment can be edited for a folder which was created earlier
-		When the user clicks "Edit comment"
+		When the user clicks Edit comment
 		Then the user should able to see changes
+	@SEAM-219 @wip
+	Scenario: Verify comment can be deleted for a folder which was created earlier
+		When the user clicks Delete comment
+		Then the user should not see any comments
+
