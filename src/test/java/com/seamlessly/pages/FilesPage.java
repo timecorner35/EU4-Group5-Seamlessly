@@ -206,7 +206,14 @@ public class FilesPage extends BasePage {
             }
         }
     }
-
+    @FindBy(css = ".nav-icon-trashbin.svg")
+    public WebElement deletedfiles;
+    @FindBy(css = ".nametext.extra-data")
+    public WebElement deletedfolder;
+    @FindBy(xpath = "(//*[contains(text(),'Restore')])[2]")
+    public WebElement restoreButton;
+    @FindBy(css = ".innernametext")
+    public WebElement restoredFile;
 
 
 }
