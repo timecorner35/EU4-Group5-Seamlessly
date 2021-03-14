@@ -28,7 +28,16 @@ Feature: Files / Folders
 	#AC1: a comment box is displayed when Comments is selected under Details
 	#AC2: when click to the arrow, entered comment should be saved, comment owner username should be seen and comment box should be emptied for new comments.
 	#AC3: Previously made comments can be edited or deleted.
-	@SEAM-210 @wip
+	@SEAM-210
 	Scenario: Verify user able to leave a comment for folder
-		When the user leaves comments
+		When the user leaves comments for a folder
 		Then the user should able to see that comment
+	@SEAM-211
+	Scenario: Verify comment can be edited for a folder which was created earlier
+		When the user clicks Edit comment
+		Then the user should able to see changes
+	@SEAM-219 @wip
+	Scenario: Verify comment can be deleted for a folder which was created earlier
+		When the user clicks Delete comment
+		Then the user should not see any comments
+

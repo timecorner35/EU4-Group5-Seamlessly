@@ -108,8 +108,8 @@ public class FilesStepDefs {
         Assert.assertTrue(filesPage.fileFolderText.size() >= 2);
     }
 
-    @When("the user leaves comments")
-    public void the_user_leaves_comments() {
+    @When("the user leaves comments for a folder")
+    public void theUserLeavesCommentsForA() {
        filesPage.fileFolder3dotOptions("Details");
        filesPage.fileFolderDetailsOption("comments");
        filesPage.leaveComment("Hi there");
@@ -138,15 +138,48 @@ public class FilesStepDefs {
 
 
     @When("the user added {string} to {string}")
-    public void the_user_added_to(String string, String string2) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    public void the_user_added_to(String string,String string2) throws InterruptedException {
+
+        BrowserUtils.waitFor(3);
+        filesPage.folderFile3dot.click();
+        Thread.sleep(3000);
+        filesPage.addToFav.click();
+
+
     }
 
     @Then("the {string} can be seen on {string} tab")
-    public void the_can_be_seen_on_tab(String string, String string2) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    public void the_can_be_seen_on_tab(String string,String string2) {
+
+        filesPage.favTab.click();
+        Assert.assertTrue(filesPage.favfolder.getText().contains(string));
+        filesPage.navigateToTab("Home");
+        filesPage.folderFile3dot.click();
+        filesPage.delete.click();
+
+    }
+    @When("the user clicks Edit comment")
+    public void the_user_clicks_edit_comment() {
+        filesPage.fileFolder3dotOptions("Details");
+        filesPage.fileFolderDetailsOption("comments");
+        filesPage.setEditComment("change comment");
+    }
+
+    @Then("the user should able to see changes")
+    public void the_user_should_able_to_see_changes() {
+        Assert.assertTrue(filesPage.comments.isDisplayed());
+    }
+
+    @When("the user clicks Delete comment")
+    public void the_user_clicks_Delete_comment() {
+        //filesPage.chooseFileFolder("Notes","Details");
+        filesPage.fileFolder3dotOptions("Details");
+        filesPage.fileFolderDetailsOption("comments");
+        filesPage.setDeleteComment();
+    }
+    @Then("the user should not see any comments")
+    public void the_user_should_not_see_any_comments() {
+        Assert.assertTrue(filesPage.noComments.size() != 0);
     }
 
 

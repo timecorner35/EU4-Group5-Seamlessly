@@ -11,12 +11,14 @@ import org.junit.Assert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class FilesPage extends BasePage {
+    Actions actions = new Actions(Driver.get());
 
     @FindBy(xpath = "//span[@class='icon icon-add']")
     public WebElement plusIcon;
@@ -60,11 +62,25 @@ public class FilesPage extends BasePage {
     @FindBy(id = "versionsTabView")
     public WebElement sidePageVersions;
 
+    @FindBy(xpath = "(//*[@class='nametext'])[2]")
+    public WebElement favfolder;
 
-    @FindBy(css = "div[class='message']")
+    @FindBy(xpath ="//span[text()='Add to favourites']")
+    public WebElement addToFav;
+
+    @FindBy(css = ".nav-icon-favorites.svg")
+    public WebElement favTab;
+
+    @FindBy(xpath = "(//span[text()='Folder1'])[3]")
+    public WebElement favTabFolder;
+
+
+
+
+    @FindBy(xpath = "(//div[@class='message'])[1]")
     public WebElement commentMsgInputBox;
 
-    @FindBy(css = "input[class='submit icon-confirm has-tooltip']")
+    @FindBy(xpath = "(//input[@class='submit icon-confirm has-tooltip'])[1]")
     public WebElement submitComment;
 
     @FindBy(xpath = "//li[@class='comment']")
@@ -85,6 +101,23 @@ public class FilesPage extends BasePage {
     @FindBy(xpath = "//*[@class='app-sidebar-tabs__nav']//ul/li")
     public List<WebElement> sidePageSideTab;
 
+    @FindBy(css = "a[class='action more icon icon-more has-tooltip']")
+    public WebElement comment3dot;
+
+    @FindBy(css = "a[class='menuitem action edit permanent']")
+    public WebElement editComment;
+
+    @FindBy(xpath = "(//form/div[@class='message' ])[2]")
+    public WebElement editCommentInputBox;
+
+    @FindBy(xpath = "(//input[@class='submit icon-confirm has-tooltip'])[2]")
+    public WebElement editCommentSubmit;
+
+    @FindBy(xpath = "(//a[@class='menuitem action delete permanent'])[2]")
+    public WebElement deleteComment;
+
+    @FindBy(xpath = "//ul[@class='comments']/li")
+    public List<WebElement> noComments;
 
     public void createTextFile(String s) {
         plusIcon.click();
@@ -152,6 +185,28 @@ public class FilesPage extends BasePage {
 
         }
     }
+
+    public void setEditComment(String comment){
+        comment3dot.click();
+        editComment.click();
+        editCommentInputBox.clear();
+        editCommentInputBox.sendKeys(comment);
+        editCommentSubmit.click();
+    }
+
+    public void setDeleteComment(){
+        comment3dot.click();
+        deleteComment.click();
+    }
+
+    public void chooseFileFolder(String name,String option){
+        for (WebElement ele : folderFileList) {
+            if(ele.getText().equals(name)){
+                fileFolder3dotOptions(option);
+            }
+        }
+    }
+
 
 
 }
