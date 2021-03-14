@@ -182,6 +182,39 @@ public class FilesStepDefs {
         Assert.assertTrue(filesPage.noComments.size() != 0);
     }
 
+    @Then("the user should be able to {string}")
+    public void the_user_should_be_able_to(String string) {
+        filesPage.delete.click();
+        Driver.get().navigate().refresh();
+        filesPage.deletedfiles.click();
+        Assert.assertEquals("Folder1",filesPage.deletedfolder.getText());
+    }
+    @Given("the user clicks the {string}")
+    public void the_user_clicks_the(String string) throws InterruptedException {
+        filesPage.deletedfiles.click();
+    }
+    String expected="";
+    @When("the user {string} the deleted folder")
+    public void the_user_the_deleted_folder(String string) {
+        expected = filesPage.deletedfolder.getText();
+        filesPage.restoreButton.click();
+    }
+    @Then("the user should be able to see the restore folder on \"All files\"page")
+    public void the_user_should_be_able_to_see_the_restore_folder_on_All_files_page() throws InterruptedException {
+        filesPage.navigateToTab("Home");
+        Thread.sleep(5000);
+        String actual = filesPage.restoredFile.getText();
+        Assert.assertEquals(expected,actual);
+    }
+    @When("the user click on {int} dots")
+    public void theUserClickOnDots(int arg0) {
+        filesPage.folderFile3dot.click();
+    }
+
+
+
+
+
 
 
 }
