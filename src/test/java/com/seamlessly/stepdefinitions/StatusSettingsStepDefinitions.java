@@ -45,10 +45,9 @@ public class StatusSettingsStepDefinitions {
         Driver.get().navigate().refresh();
         new OnlineStatusPopupPage().profile.click();
         String actual = new OnlineStatusPopupPage().statusIcon.getAttribute("class");
-        if (string.equals("")) {
-            Assert.assertEquals(string + actual, actual);
-        } else
-            Assert.assertTrue(actual.contains(string));
+        System.out.println(actual);
+
+            Assert.assertTrue(actual.contains(string.toLowerCase()));
     }
 
     @Given("clicks {string} module")
