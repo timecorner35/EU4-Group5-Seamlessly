@@ -139,8 +139,8 @@ public class FilesStepDefs {
 
 
 
-    @When("the user added {string} to Favourites")
-    public void the_user_added_to(String string) throws InterruptedException {
+    @When("the user added {string} to {string}")
+    public void the_user_added_to(String string,String string2) throws InterruptedException {
 
         BrowserUtils.waitFor(3);
         filesPage.folderFile3dot.click();
@@ -150,16 +150,16 @@ public class FilesStepDefs {
 
     }
 
-    @Then("the {string} can be seen on Favourites tab")
-    public void the_can_be_seen_on_tab(String string) {
+    @Then("the {string} can be seen on {string} tab")
+    public void the_can_be_seen_on_tab(String string,String string2) {
 
         filesPage.favTab.click();
         Assert.assertTrue(filesPage.favfolder.getText().contains(string));
         filesPage.navigateToTab("Home");
         filesPage.folderFile3dot.click();
         filesPage.delete.click();
-
     }
+
     @When("the user clicks Edit comment for a {string}")
     public void the_user_clicks_edit_comment(String chooseFileFolder) {
         BrowserUtils.waitFor(2);
