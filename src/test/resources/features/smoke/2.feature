@@ -30,3 +30,4 @@ Feature:
 		
 		 And the user should be able to logout
 		 Then the user should be able to back into the login page
+
