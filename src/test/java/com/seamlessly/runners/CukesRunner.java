@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features/smoke",
         glue = "com/seamlessly/stepdefinitions",
         dryRun = false
-//        tags = "@wip"
+//        tags = "@SEAM-172"
 
 
 )

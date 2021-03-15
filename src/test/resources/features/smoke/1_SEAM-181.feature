@@ -14,44 +14,9 @@ Feature:
 	#AC4: user chooses one of five different status messages
 	#AC5: user sets a deadline for the status message
 	#AC6: user can delete a status message
-	@SEAM-167
+	@SEAM-167 @SEAM-225
 	Scenario: Verify that user can see online status
 		    Then the user should be able to see status	
-
-	#AC1: User can see his/her online status
-	#{color:#FF0000}AC2: user can change/select one of four different online status{color}
-	#AC3: user sets up a generic status message
-	#AC4: user chooses one of five different status messages
-	#AC5: user sets a deadline for the status message
-	#AC6: user can delete a status message
-	@SEAM-171
-	Scenario Outline: Verify that user can change online status
-		    When the user chooses "<Status>"
-		    Then status changes to "<New Status>"
-		    Examples:
-		      | Status         | New Status    |
-		      | Online         | online        |
-		      | Away           | away          |
-		      | Do not disturb | dnd           |
-		      | Invisible      | invisible     |	
-
-	#AC1: User can see his/her online status
-	#AC2: user can change/select one of four different online status
-	#{color:#FF0000}AC3: user sets up a generic status message{color}
-	#AC4: user chooses one of five different status messages
-	#AC5: user sets a deadline for the status message
-	#AC6: user can delete a status message
-	@SEAM-172
-	Scenario Outline: Verify that user can setup a status message
-		    When user enters "<Status Message>" into inputbox
-		    Then status changes to "<Status Message>"
-		    Examples:
-		      | Status Message  |
-		      | hola            |
-		      | i'm really busy |
-		      | lunch break     |
-		      | back in 15 mins |
-			
 
 	#AC1: User can see his/her online status
 	#AC2: user can change/select one of four different online status
@@ -71,29 +36,4 @@ Feature:
 		      | Working remotely     |
 		      | Out sick             |
 		      | Vacationing          |
-			
-
-	#AC1: User can see his/her online status
-	#AC2: user can change/select one of four different online status
-	#AC3: user sets up a generic status message
-	#AC4: user chooses one of five different status messages
-	#{color:#FF0000}AC5: user sets a deadline for the status message{color}
-	#AC6: user can delete a status message
-	@SEAM-179
-	Scenario Outline: Verify that user can set deadline for status message
-		    When the user chooses deadline from "<pre-defined deadlines>"
-		    Then clear status message changes to "<pre-defined deadlines>"
-		    Examples:
-		      | pre-defined deadlines |
-		      | 30 minutes            |
-		      | 1 hour                |
-		      | 4 hours               |
-		      | Today                 |
-		      | This week             |	
-
-	#AC1: User can see his/her online status
-	#AC2: user can change/select one of four different online status
-	#AC3: user sets up a generic status message
-	#AC4: user chooses one of five different status messages
-	#AC5: user sets a deadline for the status message
-	#{color:#FF0000}AC6: user can delete a status message{color}
+		
