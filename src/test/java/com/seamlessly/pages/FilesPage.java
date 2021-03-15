@@ -119,6 +119,16 @@ public class FilesPage extends BasePage {
     @FindBy(xpath = "//ul[@class='comments']/li")
     public List<WebElement> noComments;
 
+    @FindBy(css = ".nav-icon-trashbin.svg")
+    public WebElement deletedfiles;
+    @FindBy(css = ".nametext.extra-data")
+    public WebElement deletedfolder;
+    @FindBy(xpath = "(//*[contains(text(),'Restore')])[2]")
+    public WebElement restoreButton;
+    @FindBy(css = ".innernametext")
+    public WebElement restoredFile;
+
+
     public void createTextFile(String s) {
         plusIcon.click();
         newFile.click();
@@ -199,21 +209,18 @@ public class FilesPage extends BasePage {
         deleteComment.click();
     }
 
-    public void chooseFileFolder(String name,String option){
+    public void chooseFileFolder(String name){
         for (WebElement ele : folderFileList) {
-            if(ele.getText().equals(name)){
-                fileFolder3dotOptions(option);
+            if(ele.getText().contains(name)){
+                actions.contextClick(ele).perform();
             }
         }
     }
-    @FindBy(css = ".nav-icon-trashbin.svg")
-    public WebElement deletedfiles;
-    @FindBy(css = ".nametext.extra-data")
-    public WebElement deletedfolder;
-    @FindBy(xpath = "(//*[contains(text(),'Restore')])[2]")
-    public WebElement restoreButton;
-    @FindBy(css = ".innernametext")
-    public WebElement restoredFile;
+
+    public void rightClickMenuOption(String chooseIcon){
+        Driver.get().findElement(By.xpath("//span[@class='icon icon icon-"+chooseIcon+"']")).click();
+    }
+
 
 
 }
