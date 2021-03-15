@@ -108,11 +108,13 @@ public class FilesStepDefs {
         Assert.assertTrue(filesPage.fileFolderText.size() >= 2);
     }
 
-    @When("the user leaves comments for a folder")
-    public void theUserLeavesCommentsForA() {
-       filesPage.fileFolder3dotOptions("Details");
-       filesPage.fileFolderDetailsOption("comments");
-       filesPage.leaveComment("Hi there");
+    @When("the user leaves comments for a {string}")
+    public void theUserLeavesCommentsForACybertek(String chooseFileOrFolder) {
+        BrowserUtils.waitFor(2);
+        filesPage.chooseFileFolder(chooseFileOrFolder);
+        filesPage.rightClickMenuOption("details");
+        filesPage.fileFolderDetailsOption("comments");
+        filesPage.leaveComment("Hi there");
 
     }
 
@@ -158,9 +160,11 @@ public class FilesStepDefs {
         filesPage.delete.click();
 
     }
-    @When("the user clicks Edit comment")
-    public void the_user_clicks_edit_comment() {
-        filesPage.fileFolder3dotOptions("Details");
+    @When("the user clicks Edit comment for a {string}")
+    public void the_user_clicks_edit_comment(String chooseFileFolder) {
+        BrowserUtils.waitFor(2);
+        filesPage.chooseFileFolder(chooseFileFolder);
+        filesPage.rightClickMenuOption("details");
         filesPage.fileFolderDetailsOption("comments");
         filesPage.setEditComment("change comment");
     }
@@ -170,10 +174,11 @@ public class FilesStepDefs {
         Assert.assertTrue(filesPage.comments.isDisplayed());
     }
 
-    @When("the user clicks Delete comment")
-    public void the_user_clicks_Delete_comment() {
-        //filesPage.chooseFileFolder("Notes","Details");
-        filesPage.fileFolder3dotOptions("Details");
+    @When("the user clicks Delete comment for a {string}")
+    public void the_user_clicks_Delete_comment(String chooseFileFolder) {
+        BrowserUtils.waitFor(2);
+        filesPage.chooseFileFolder(chooseFileFolder);
+        filesPage.rightClickMenuOption("details");
         filesPage.fileFolderDetailsOption("comments");
         filesPage.setDeleteComment();
     }
