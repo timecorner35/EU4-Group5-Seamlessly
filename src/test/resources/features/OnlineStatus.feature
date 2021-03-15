@@ -1,4 +1,4 @@
-@SEAM-183
+@SEAM-183 @yus
 Feature: Online Status Changing
 
   Background:
@@ -6,25 +6,23 @@ Feature: Online Status Changing
     Given the user logged in as "yusuf"
     When the user navigates to "Settings" tab and clicks
     And clicks "Status" module
-		
+
 
   @SEAM-167
   Scenario: Verify that user can see online status
     Then the user should be able to see status
 
 
-
   @SEAM-171
   Scenario Outline: Verify that user can change online status
     When the user chooses "<Status>"
-    Then status changes to "<Statuss>"
+    Then status changes to "<New Status>"
     Examples:
-      | Status         | Statuss   |
-      | Online         | online    |
-      | Away           | away      |
-      | Do not disturb | dnd       |
-      | Invisible      | invisible |
-			
+      | Status         | New Status |
+      | Online         | online     |
+      | Away           | away       |
+      | Do not disturb | dnd        |
+      | Invisible      | invisible  |
 
 
   @SEAM-172
@@ -37,7 +35,6 @@ Feature: Online Status Changing
       | i'm really busy |
       | lunch break     |
       | back in 15 mins |
-			
 
 
   @SEAM-178
@@ -51,7 +48,6 @@ Feature: Online Status Changing
       | Working remotely     |
       | Out sick             |
       | Vacationing          |
-			
 
 
   @SEAM-179
