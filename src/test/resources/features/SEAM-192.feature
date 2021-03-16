@@ -16,8 +16,8 @@ Feature:
 	@SEAM-204
 	Scenario: Verify that user can add a file to Favourites 
 		And the user creates text file named "text"
-		When the user added "text" to Favourites
-		Then the "text" can be seen on Favourites tab
+		When the user added "text" to "Favourites"
+		Then the "text" can be seen on "Favourites" tab
 
 
 	#{color:#00875a}*User Story:*{color}
@@ -31,8 +31,8 @@ Feature:
 	Scenario: Verify that user can add a folder to Favourites
 		And the user creates folder named "Folder1"
 
-		When the user added "Folder1" to Favourites
-		Then the "Folder1" can be seen on Favourites tab
+		When the user added "Folder1" to "Favourites"
+		Then the "Folder1" can be seen on "Favourites" tab
 
 
 
