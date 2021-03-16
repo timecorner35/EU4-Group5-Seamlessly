@@ -9,10 +9,10 @@ import org.junit.runner.RunWith;
         plugin = {"json:target/cucumber.json",
                 "html:target/default-html-reports",
                 "rerun:target/rerun.txt"},
-        features = "src/test/resources/features/smoke",
+        features = "src/test/resources/features",
         glue = "com/seamlessly/stepdefinitions",
-        dryRun = false
-//        tags = "@SEAM-172"
+        dryRun = false,
+        tags = "@SEAM-172"
 
 
 )
