@@ -1,4 +1,4 @@
-@SEAM-220
+@SEAM-220 @smoke
 Feature: 
 
 	#{color:#00875a}*User Story:*{color}
