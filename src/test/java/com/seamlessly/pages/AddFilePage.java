@@ -8,15 +8,15 @@ public class AddFilePage extends BasePage{
     @FindBy(css = "span.icon.icon-add")
     public WebElement addButton;
 
-    @FindBy(xpath = "//*[@id=\"controls\"]/div[2]/div[2]/ul/li[1]/label")
+    @FindBy(css = "#file_upload_start")
     public WebElement UploadFile;
-
+//#file_upload_start
     @FindBy(css= "a[data-action='folder']")
     public WebElement NewFolder;
 
     @FindBy(css = "a[data-action='file']")
     public WebElement NewTextDocument;
-
+////*[@id="controls"]/div[2]/div[2]/ul/li[1]/label
 
     @FindBy(xpath = "//input[@class='icon-confirm']")
     public WebElement NewfolderConfrim;
@@ -26,7 +26,7 @@ public class AddFilePage extends BasePage{
 
     @FindBy (xpath = "//*[@id=\"fileList\"]/tr[1]/td[2]/a/span[1]")
     public WebElement uploadedFolder;
-////span[contains(text(),'Test folder1')]
+
 
     @FindBy(linkText = "New text document")
     public WebElement NewtextDocument;
@@ -43,5 +43,7 @@ public class AddFilePage extends BasePage{
     @FindBy(xpath = "//*[@id=\"fileList\"]/tr[2]/td[2]/a/span[1]")
     public WebElement newCreatedText;
 
+    @FindBy(xpath="//*[@id=\"fileList\"]/tr")
+    public WebElement fileTable;
 
 }

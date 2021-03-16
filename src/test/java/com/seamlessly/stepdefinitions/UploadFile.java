@@ -2,7 +2,6 @@ package com.seamlessly.stepdefinitions;
 
 import com.seamlessly.pages.AddFilePage;
 import com.seamlessly.utilities.BrowserUtils;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
@@ -15,11 +14,12 @@ public class UploadFile {
     public void the_user_upload_new_file() {
         addFilePage.addButton.click();
         String projectPath=System.getProperty("user.dir");
-        String Filepath="src/test/resources/Test test.docx";
+        String Filepath="/src/test/resources/Test test.docx";
         String fullPath=projectPath+Filepath;
 
+        BrowserUtils.waitFor(4);
         addFilePage.UploadFile.sendKeys(fullPath);
-        BrowserUtils.waitFor(3);
+        BrowserUtils.waitFor(4);
 
 
 
@@ -27,8 +27,11 @@ public class UploadFile {
 
     @Then("the user should locate uploaded file")
     public void the_user_should_locate_uploaded_file() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
+        addFilePage.homeButton.click();
+        BrowserUtils.waitFor(2);
+        String expectednewFile="docx";
+       Assert.assertTrue(addFilePage.uploadedFolder.getText().contains(expectednewFile));
     }
 
     @When("the user create new folder")
