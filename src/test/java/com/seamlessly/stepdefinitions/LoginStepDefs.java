@@ -23,6 +23,7 @@ public class LoginStepDefs {
     public void the_user_is_on_the_login_page() {
         String url = ConfigurationReader.get("url");
         Driver.get().get(url);
+        System.out.println(System.getProperty("user.dir"));
     }
 
 
