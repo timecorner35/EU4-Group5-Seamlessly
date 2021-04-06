@@ -13,6 +13,7 @@ import java.util.concurrent.TimeUnit;
 public class Hooks {
     @Before
     public void setUp(){
+        String buildName = System.getenv("BROWSERSTACK_BUILD_NAME");
         Driver.get().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         Driver.get().manage().window().maximize();
         Driver.get().get(ConfigurationReader.get("url"));
